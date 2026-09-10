@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// declarando variaveis 
+ int peça; // definindo variavel da peça
+ int moviRainha, moviTorre, moviCavalo;
+ int c = 1;
+
+
+// função para chamar o movimento da rainha 
+void MoverRainha(int x){ 
+
+    if(x == 0){ // quando os movimentos acabarem vai retornar a seguinte mensagem 
+        printf(" Rainha moveu-se em linha reta para a esquerda ");
+        return;
+    }
+    printf("Esquerda \n"); // a mensagem que sera gerada com a mesma quantidade de vezes indicada pelos movimentos integrados na variavel x 
+    MoverRainha(x - 1); // chamando função de novo e diminuindo os movimentos 
+}
+
+// função para chamar o movimento da torre
+void MoverTorre(int x){ 
+
+    if(x == 0){ // quando os movimentos acabarem vai retornar a seguinte mensagem 
+        printf(" Torre moveu-se em linha reta para direita ");
+        return;
+    }
+    printf("Direita\n "); // a mensagem que sera gerada com a mesma quantidade de vezes indicada pelos movimentos integrados na variavel x 
+    MoverTorre(x - 1); // chamando função de novo e diminuindo os movimentos 
+}
+
+// função para chamar o movimento do bispo 
+void MoverBispo(int x){
+    if(x == 0){ // quando os movimentos acabarem vai retornar a seguinte mensagem 
+        printf(" Bispo moveu-se em diagonal na superior direita ");
+        return;
+    }
+    printf(" Diagonal superior direita \n "); // a mensagem que sera gerada com a mesma quantidade de vezes indicada pelos movimentos integrados na variavel x 
+    MoverBispo(x - 1); // chamando função de novo e diminuindo os movimentos 
+}
+
+// função para chamar o movimento do cavalo
+void MoverCavalo(int x){
+    if(x == 0){ // quando os movimentos acabarem vai retornar a seguinte mensagem 
+        printf(" Cavalo moveu-se em L na superior direita ");
+        return;
+    }
+    for(int movi = 1; movi <= 1; movi++){
+        for(moviCavalo = 1; moviCavalo <= 2; moviCavalo++){
+           printf("Cima\n"); // a mensagem que sera gerada com a mesma quantidade de vezes indicada pelos movimentos integrados na variavel x 
+        }
+        printf("Direita "); // mensagem que sera gerada com a mesma quantidade de vezes que a função ser chamada com valores acima de 0
+        MoverCavalo( x - 1); // chamando função de novo e diminuindo os movimentos 
+    }
+}
+
+    /* if(x == 1){
+        for(moviCavalo = x; moviCavalo <= 1; moviCavalo++){
+                do {
+                    printf("Cima\n");
+                    c++;
+                } while(c <=2);
+            MoverCavalo(x -1);
+        }
+    }
+    if(x == 0){
+        for(moviCavalo = x; moviCavalo <= x; moviCavalo++){
+                do {
+                    printf("Direita\n");
+                    c++;
+                } while(c <= 1);
+            printf("Cavalo moveu-se em L na superior direita");
+        }
+    }*/
+
+
+int main(){
+
+ // apresentando o jogo
+ printf("-- BEM VINDO AO JOGO DE XADREZ --\n");
+ printf("\n");
+ printf(" QUAL PEÇA DESEJA MOVER ?\n"); // perguntando ao usuario que peça deseja mover
+ printf(" 1 - RAINHA\n");
+ printf(" 2 - TORRE\n");
+ printf(" 3 - BISPO\n");
+ printf(" 4 - CAVALO\n");
+ scanf( "%d", &peça); // inserindo o numero indicado pelo usuario na variavel peça
+
+    // verificando qual peça o usuario escolheu movimentar
+    if(peça == 1){
+        MoverRainha(8); // integrando o valor de movimento para a função MoverRainha()
+    }
+    if(peça == 2){
+        MoverTorre(5); // integrando o valor de movimento para a função MoverTorre()
+    }
+    if(peça == 3){
+        MoverBispo(5); // integrando o valor de movimento para a função MoverBispo()
+    }
+    if(peça == 4){
+        MoverCavalo(1); // integrando o valor de movimento para a função MoverCavalo()
+    }
+
+}
